@@ -1,0 +1,151 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package assignment2project3;
+
+import java.text.NumberFormat;
+
+/**
+ *
+ * @author adamc
+ */
+public class Assignment2Project3 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        
+        
+        
+        double[][] sales = {
+    {1540.0, 2010.0, 2450.0, 1845.0}, // Region 1
+    {1130.0, 1168.0, 1847.0, 1491.0}, // Region 2
+    {1580.0, 2305.0, 2710.0, 1284.0}, // Region 3
+    {1105.0, 4102.0, 2391.0, 1576.0}  // Region 4
+};
+        
+        
+        System.out.println("The Sales Report application\n");
+        
+
+        //part 1
+        System.out.println("Region" + "\t" + "Q1" + "\t\t\t" + "Q2" + "\t\t\t" + "Q3" + "\t\t\t" +"Q4");
+        
+        int k = 1;
+        System.out.print(k);
+        
+        
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        
+        
+        for (double[] sale : sales) {
+            for (int j = 0; j < sale.length; j++) {
+                
+                System.out.print("\t" + formatter.format(sale[j]) + "\t");
+                
+                if (j == 3)
+                {
+                    System.out.print("\n");
+                        System.out.print(++k);
+                }
+                if (k==5)
+                {
+                    System.out.println("\b");
+                }
+
+            }
+        }
+        
+        
+        //part 2
+        
+        
+        
+        
+        System.out.print("Sales by region:");
+    
+        k = 0;
+        
+        int regionTotal = 0;
+    for (double[] sale : sales) {
+            for (int j = 0; j < sale.length; j++) {
+                
+                regionTotal += sale[j];
+                
+                if (j == 3)
+                {
+                    System.out.print("\n");
+                    
+                        System.out.print("Region " + ++k + ": "  +  formatter.format(regionTotal));
+                        regionTotal = 0;
+                }
+                if (k==5)
+                {
+                    System.out.println("\b");
+                }
+
+            }
+        }
+    
+    
+    
+    
+    
+    //part 3
+    
+    
+    System.out.print("\n\nSales by quarter:");
+    
+        k = 0;
+        
+         int colTotal = 0;
+    for (int i = 0; i < 4; i++)
+    {
+        
+        for (int j = 0; j < 4; j++)
+        {
+            colTotal += sales[j][i];
+            if (j ==3)
+                {
+                    System.out.print("\n");
+                    
+                        System.out.print("Q" + ++k + ": "  +  formatter.format(colTotal));
+                        colTotal = 0;
+                }
+                if (k==5)
+                {
+                    System.out.println("\b");
+                }
+        }
+    
+    }
+    
+    
+    
+    
+    
+    //part 4
+    
+    System.out.print("\n\n" + "Total sales: ");
+    
+    
+    int totalSales = 0;
+    
+    for (double[] sale : sales) {
+            for (int j = 0; j < sale.length; j++) {
+                
+                totalSales += sale[j];
+            }
+        }
+    
+  
+    System.out.print( formatter.format((totalSales)));
+    
+    
+    
+    
+}
+}
